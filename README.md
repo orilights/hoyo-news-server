@@ -1,8 +1,8 @@
 # news-server
 
-`原神` `崩坏3` `崩坏：星穹铁道` 新闻获取服务器
+`原神` `崩坏3` `崩坏：星穹铁道` `绝区零` 新闻获取服务器
 
-相关项目：[genshin-news-search](https://github.com/orilights/genshin-news-search)
+相关项目：[hoyo-news-search](https://github.com/orilights/hoyo-news-search)
 
 新闻数据默认缓存 1 小时，启动时会全量获取数据，可能会消耗较多时间
 
@@ -12,7 +12,7 @@
 
 路径参数：
 
-`game`：要获取新闻的游戏，可选值：`genshin`, `honkai3`, `starrail`
+`game`：要获取新闻的游戏，可选值：`genshin`, `honkai3`, `starrail`, `zzz`
 
 查询参数：
 
@@ -30,7 +30,8 @@
             "createTime": "2024-01-28 23:39:30",
             "id": 122096,
             "startTime": "2024-01-31 10:00:00",
-            "title": "「神铸赋形」祈愿：「法器·鹤鸣余音」「法器·千夜浮梦」概率UP！"
+            "title": "「神铸赋形」祈愿：「法器·鹤鸣余音」「法器·千夜浮梦」概率UP！",
+            "video": null
         },
         ...
     ],

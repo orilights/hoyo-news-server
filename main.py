@@ -1,5 +1,5 @@
 from datetime import datetime
-import json, os
+import json, os, re
 
 from flask import Flask, request
 from flask_cors import CORS
@@ -12,12 +12,15 @@ GAME_API = {
     'starrail':
     'https://api-takumi-static.mihoyo.com/content_v2_user/app/1963de8dc19e461c/getContentList?iPage={pageNum}&iPageSize={pageSize}&sLangKey=zh-cn&isPreview=0&iChanId=255',
     'honkai3':
-    'https://api-takumi-static.mihoyo.com/content_v2_user/app/b9d5f96cd69047eb/getContentList?iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-cn&iChanId=693&isPreview=0'
+    'https://api-takumi-static.mihoyo.com/content_v2_user/app/b9d5f96cd69047eb/getContentList?iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-cn&iChanId=693&isPreview=0',
+    'zzz':
+    "https://api-takumi-static.mihoyo.com/content_v2_user/app/706fd13a87294881/getContentList?iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-cn&iChanId=273"
 }
 
 PAGE_SIZE = 100
 CACHE_TIME = 3600
 CACHE_PATH = './data'
+VIDEO_PATTERN = r'https?://[^ ]+\.(mp4|mov)'
 
 app = Flask(__name__)
 
@@ -55,7 +58,8 @@ def transform_news(news_raw):
         'title': news_raw['sTitle'],
         'startTime': news_raw['dtStartTime'],
         'createTime': news_raw['dtCreateTime'],
-        'banner': None
+        'banner': None,
+        'video': None,
     }
     ext_data = json.loads(news_raw['sExt'])
     for ext in ext_data:
@@ -69,6 +73,8 @@ def transform_news(news_raw):
                     break
         if ret['banner']:
             break
+    if video := re.search(VIDEO_PATTERN, news_raw['sContent']):
+        ret['video'] = video.group(0)
     return ret
 
 
@@ -93,6 +99,7 @@ def get_news_data(game: str):
     api_url = GAME_API[game]
 
     news_total = get_total(api_url)
+    print(f"game: {game}")
     print(f"news: {news_total}")
 
     news_list = []
@@ -138,7 +145,8 @@ def get_game_news(game: str):
         if data is None:
             return {'code': 1, 'msg': '获取数据失败'}
 
-        if force_refresh or data['updateTime'] + CACHE_TIME < get_ts():
+        cache_expired = data['updateTime'] + CACHE_TIME < get_ts()
+        if force_refresh or cache_expired:
             total = get_total(GAME_API[game])
             data['updateTime'] = get_ts()
             if total != data['newsCount']:
@@ -146,7 +154,7 @@ def get_game_news(game: str):
                 data['newsData'] = patch_news_list(
                     data['newsData'], get_news(GAME_API[game], PAGE_SIZE, 1),
                     total)
-                write_cache(game, data)
+            write_cache(game, data)
         return {'code': 0, **data}
     except Exception as e:
         print(e)
