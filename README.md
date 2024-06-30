@@ -1,6 +1,6 @@
 # news-server
 
-`原神` `崩坏3` `崩坏：星穹铁道` `绝区零` 新闻获取服务器
+米哈游新闻获取服务器
 
 相关项目：[hoyo-news-search](https://github.com/orilights/hoyo-news-search)
 
@@ -12,7 +12,7 @@
 
 路径参数：
 
-`game`：要获取新闻的游戏，可选值：`genshin`, `honkai3`, `starrail`, `zzz`
+`game`：要获取新闻的游戏，可选值：`genshin`, `starrail`, `honkai3`, `zzz`, `mihoyo`, `genshin_os`, `starrail_os`, `honkai3_os`, `zzz_os`, `hoyoverse`
 
 查询参数：
 

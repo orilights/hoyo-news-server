@@ -14,7 +14,19 @@ GAME_API = {
     'honkai3':
     'https://api-takumi-static.mihoyo.com/content_v2_user/app/b9d5f96cd69047eb/getContentList?iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-cn&iChanId=693&isPreview=0',
     'zzz':
-    "https://api-takumi-static.mihoyo.com/content_v2_user/app/706fd13a87294881/getContentList?iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-cn&iChanId=273"
+    "https://api-takumi-static.mihoyo.com/content_v2_user/app/706fd13a87294881/getContentList?iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-cn&iChanId=273",
+    'mihoyo':
+    "https://api-takumi-static.mihoyo.com/content_v2_user/app/537c17c553834ed6/getContentList?iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-cn&iChanId=107",
+    'genshin_os':
+    "https://sg-public-api-static.hoyoverse.com/content_v2_user/app/a1b1f9d3315447cc/getContentList?iAppId=32&iChanId=395&iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-tw",
+    'starrail_os':
+    "https://sg-public-api-static.hoyoverse.com/content_v2_user/app/113fe6d3b4514cdd/getContentList?iPage={pageNum}&iPageSize={pageSize}&sLangKey=zh-cn&isPreview=0&iChanId=248",
+    'honkai3_os':
+    "https://sg-public-api-static.hoyoverse.com/content_v2_user/app/5fcd2aa439ca4aea/getContentList?iPageSize={pageSize}&iPage={pageNum}&sLangKey=zh-cn&iChanId=514&isPreview=0",
+    'zzz_os':
+    "https://sg-public-api-static.hoyoverse.com/content_v2_user/app/3e9196a4b9274bd7/getContentList?iPageSize={pageSize}&iPage={pageNum}&iChanId=288&sLangKey=zh-cn",
+    'hoyoverse':
+    "https://sg-public-api-static.hoyoverse.com/content_v2_user/app/ea15ca8a7a654b5e/getContentList?isPreview=0&iPage={pageNum}&iPageSize={pageSize}&iChanId=206&sLangKey=zh-cn",
 }
 
 PAGE_SIZE = 100
@@ -87,6 +99,8 @@ def read_cache(cache_name):
 
 
 def write_cache(cache_name, data):
+    if not os.path.exists(CACHE_PATH):
+        os.makedirs(CACHE_PATH)
     filename = os.path.join(CACHE_PATH, cache_name + '_cache.json')
     json.dump(data, open(filename, 'w', encoding='utf-8'), ensure_ascii=False)
 
@@ -123,9 +137,11 @@ def patch_news_list(news_list: list, patch: list, total: int):
 
 
 with app.app_context():
-    if not os.path.exists(CACHE_PATH):
-        os.makedirs(CACHE_PATH)
     for game in GAME_API:
+        if cache := read_cache(game):
+            total = get_total(GAME_API[game])
+            if total - len(cache['newsData']) < PAGE_SIZE:
+                continue
         write_cache(game, get_news_data(game))
 
 
