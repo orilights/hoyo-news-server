@@ -133,6 +133,8 @@ def get_news_data(game: str):
 
 
 def patch_news_list(news_list: list, patch: list, total: int):
+    if total <= len(patch):
+        return patch
     return patch + news_list[-(total - len(patch)):]
 
 
