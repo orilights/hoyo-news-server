@@ -28,6 +28,10 @@ GAME_API = {
     'hoyoverse':
     "https://sg-public-api-static.hoyoverse.com/content_v2_user/app/ea15ca8a7a654b5e/getContentList?isPreview=0&iPage={pageNum}&iPageSize={pageSize}&iChanId=206&sLangKey=zh-cn",
 }
+if os.environ.get('SUPPORT_GAMES'):
+    SUPPORT_GAMES = os.environ.get('SUPPORT_GAMES').split(',')
+else:
+    SUPPORT_GAMES = list(GAME_API.keys())
 
 PAGE_SIZE = 100
 CACHE_TIME = 3600
@@ -139,7 +143,8 @@ def patch_news_list(news_list: list, patch: list, total: int):
 
 
 with app.app_context():
-    for game in GAME_API:
+    print('support games: ' + ','.join(SUPPORT_GAMES))
+    for game in SUPPORT_GAMES:
         if cache := read_cache(game):
             total = get_total(GAME_API[game])
             if total - len(cache['newsData']) < PAGE_SIZE:
@@ -147,9 +152,9 @@ with app.app_context():
         write_cache(game, get_news_data(game))
 
 
-@app.route('/<game>/news', methods=['GET'])
+@app.route('/<game>', methods=['GET'])
 def get_game_news(game: str):
-    if game not in GAME_API:
+    if game not in SUPPORT_GAMES:
         return {'code': 1, 'msg': '配置不存在'}
     query = request.args
     force_refresh = query.get('force_refresh', '0') == '1'
