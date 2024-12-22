@@ -42,14 +42,18 @@ def get_game_news(game: str, channal: str, force_refresh: int = 0):
         adapter = import_module(f'app.adapter.{channal_config["adapter"]}')
         data = adapter.get_news(channal_config, cache=cache)
         if data is None:
-            return {'code': 1, 'msg': '获取数据失败'}
+            if cache:
+                return {'code': 1, 'msg': '刷新数据失败，请稍后再试，如有疑问请在 Github Issue 中提出', **cache}
+            return {'code': 1, 'msg': '刷新数据失败，请稍后再试，如有疑问请在 Github Issue 中提出'}
 
         write_cache(index, data)
         return {'code': 0, **data}
 
     except Exception as e:
         print(e)
-        return {'code': 1, 'msg': '服务器错误，请稍后再试'}
+        if cache:
+            return {'code': 1, 'msg': '服务器错误，请稍后再试，如有疑问请在 Github Issue 中提出', **cache}
+        return {'code': 1, 'msg': '服务器错误，请稍后再试，如有疑问请在 Github Issue 中提出'}
 
 
 @app.get('/refresh_all')
