@@ -1,14 +1,14 @@
 FROM python:3.11-alpine
 
-WORKDIR /app
+WORKDIR /server
 
-COPY ./requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+COPY ./requirements.txt /server/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./main.py /app/main.py
+COPY ./app /server/app
 
 EXPOSE 3000
 
-RUN mkdir /app/data
+RUN mkdir /server/data
 
-ENTRYPOINT [ "gunicorn", "-b", "0.0.0.0:3000", "main:app" ]
+CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "3000"]

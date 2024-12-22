@@ -1,0 +1,76 @@
+genshin:
+  web_cn: 
+    adapter: web
+    url: https://api-takumi-static.mihoyo.com/content_v2_user/app/16471662a82d418a/getContentList?iAppId=43&iChanId=719&iPageSize={page_size}&iPage={page}&sLangKey=zh-cn
+  web_os: 
+    adapter: web
+    url: https://sg-public-api-static.hoyoverse.com/content_v2_user/app/a1b1f9d3315447cc/getContentList?iAppId=32&iChanId=395&iPageSize={page_size}&iPage={page}&sLangKey=zh-tw
+  bbs_cn_1:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=2&last_id={last_id}&page_size={page_size}&type=1
+  bbs_cn_2:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=2&last_id={last_id}&page_size={page_size}&type=2
+  bbs_cn_3:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=2&last_id={last_id}&page_size={page_size}&type=3
+        
+starrail: 
+  web_cn: 
+    adapter: web
+    url: https://api-takumi-static.mihoyo.com/content_v2_user/app/1963de8dc19e461c/getContentList?iPage={page}&iPageSize={page_size}&sLangKey=zh-cn&isPreview=0&iChanId=255
+  web_os:
+    adapter: web
+    url: https://sg-public-api-static.hoyoverse.com/content_v2_user/app/113fe6d3b4514cdd/getContentList?iPage={page}&iPageSize={page_size}&sLangKey=zh-cn&isPreview=0&iChanId=248
+  bbs_cn_1:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=6&last_id={last_id}&page_size={page_size}&type=1
+  bbs_cn_2:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=6&last_id={last_id}&page_size={page_size}&type=2
+  bbs_cn_3:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=6&last_id={last_id}&page_size={page_size}&type=3
+
+honkai3:
+  web_cn:
+    adapter: web
+    url: https://api-takumi-static.mihoyo.com/content_v2_user/app/b9d5f96cd69047eb/getContentList?iPageSize={page_size}&iPage={page}&sLangKey=zh-cn&iChanId=693&isPreview=0
+  web_os:
+    adapter: web
+    url: https://sg-public-api-static.hoyoverse.com/content_v2_user/app/5fcd2aa439ca4aea/getContentList?iPageSize={page_size}&iPage={page}&sLangKey=zh-cn&iChanId=514&isPreview=0
+  bbs_cn_1:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=1&last_id={last_id}&page_size={page_size}&type=1
+  bbs_cn_2:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=1&last_id={last_id}&page_size={page_size}&type=2
+  bbs_cn_3:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=1&last_id={last_id}&page_size={page_size}&type=3
+
+zzz:
+  web_cn:
+    adapter: web
+    url: https://api-takumi-static.mihoyo.com/content_v2_user/app/706fd13a87294881/getContentList?iPageSize={page_size}&iPage={page}&sLangKey=zh-cn&iChanId=273
+  web_os:
+    adapter: web
+    url: https://sg-public-api-static.hoyoverse.com/content_v2_user/app/3e9196a4b9274bd7/getContentList?iPageSize={page_size}&iPage={page}&iChanId=288&sLangKey=zh-cn
+  bbs_cn_1:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=8&last_id={last_id}&page_size={page_size}&type=1
+  bbs_cn_2:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=8&last_id={last_id}&page_size={page_size}&type=2
+  bbs_cn_3:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=8&last_id={last_id}&page_size={page_size}&type=3
+
+mihoyo:
+  web_cn:
+    adapter: web
+    url: https://api-takumi-static.mihoyo.com/content_v2_user/app/537c17c553834ed6/getContentList?iPageSize={page_size}&iPage={page}&sLangKey=zh-cn&iChanId=107
+  web_os:
+    adapter: web
+    url: https://sg-public-api-static.hoyoverse.com/content_v2_user/app/ea15ca8a7a654b5e/getContentList?isPreview=0&iPage={page}&iPageSize={page_size}&iChanId=206&sLangKey=zh-cn
+  
