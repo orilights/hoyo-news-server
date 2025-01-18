@@ -18,11 +18,10 @@ app.add_middleware(
 def startup_event():
     print('SUPPORTED_PARAMS', config.SUPPORTED_PARAMS)
     for params in config.SUPPORTED_PARAMS:
-        game, channal = params.split('.')
         cache = read_cache(params)
         if cache is None or is_expired(cache['update'],
                                        config.CACHE_INVALID_TIME):
-            print(f'未检测到 {game}.{channal} 缓存或缓存已过期')
+            print(f'未检测到 {params} 缓存或缓存已过期')
 
 
 @app.get('/{game}/{channal}')

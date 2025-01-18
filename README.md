@@ -1,8 +1,8 @@
-# news-server
+# hoyo-news-server
 
 米哈游新闻获取服务器
 
-相关项目：[hoyo-news-search](https://github.com/orilights/hoyo-news-search)
+相关项目：[hoyo-news-web](https://github.com/orilights/hoyo-news-web)
 
 新闻数据默认缓存 1 小时，第一次请求需要全量获取数据，可能会消耗较多时间
 
