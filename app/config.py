@@ -6,7 +6,7 @@ if os.environ.get('SUPPORTED_PARAMS'):
     SUPPORTED_PARAMS = os.environ.get('SUPPORTED_PARAMS').split(',')
 else:
     SUPPORTED_PARAMS = [f'{game}.{channal}' for game in API_CONFIG for channal in API_CONFIG[game] ]
-CACHE_TIME = 3600
+CACHE_TIME = 5 * 60
 CACHE_INVALID_TIME = 2 * 24 * 3600
 CACHE_PATH = './data'
 VIDEO_PATTERN = r'https?://[^ ]+\.(mp4|mov)'
