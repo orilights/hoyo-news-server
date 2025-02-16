@@ -12,9 +12,9 @@
 
 路径参数：
 
-`game`：要获取新闻的游戏，可选值：`genshin`, `starrail`, `honkai3`, `zzz`, `mihoyo`
+`game`：要获取新闻的游戏，可选值：`genshin`, `starrail`, `honkai3`, `zzz`, `wd`, `honkai2`, `mihoyo`
 
-`channal`：要获取新闻的渠道，可选值：`web_cn`, `web_cn`, `bbs_cn_1`, `bbs_cn_2`, `bbs_cn_3`
+`channal`：要获取新闻的渠道，可选值：`web_cn`, `web_os`, `bbs_cn_1`, `bbs_cn_2`, `bbs_cn_3`
 
 查询参数：
 
