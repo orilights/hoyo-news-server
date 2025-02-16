@@ -80,6 +80,17 @@ wd:
     adapter: bbs
     url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=4&last_id={last_id}&page_size={page_size}&type=3
 
+honkai2:
+  bbs_cn_1:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=3&last_id={last_id}&page_size={page_size}&type=1
+  bbs_cn_2:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=3&last_id={last_id}&page_size={page_size}&type=2
+  bbs_cn_3:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=3&last_id={last_id}&page_size={page_size}&type=3
+
 mihoyo:
   web_cn:
     adapter: web
