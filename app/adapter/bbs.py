@@ -60,8 +60,10 @@ def get_news(config, cache=None):
         if is_last_page:
             break
 
-        if cache_index.count(news_list[-1]['id']) > 0:
-            news_list = news_list + (cache_data[len(news_list):])
+        if news_list and news_list[-1]['id'] in cache_index:
+            match_position = cache_index.index(news_list[-1]['id'])
+            remaining_cache_data = cache_data[match_position + 1:]
+            news_list.extend(remaining_cache_data)
             break
         time.sleep(0.3)
 

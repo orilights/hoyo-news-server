@@ -99,3 +99,10 @@ mihoyo:
     adapter: web
     url: https://sg-public-api-static.hoyoverse.com/content_v2_user/app/ea15ca8a7a654b5e/getContentList?isPreview=0&iPage={page}&iPageSize={page_size}&iChanId=206&sLangKey=zh-cn
   
+dby:
+  bbs_cn_1:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=5&last_id={last_id}&page_size={page_size}&type=1
+  bbs_cn_2:
+    adapter: bbs
+    url: https://bbs-api-static.miyoushe.com/painter/wapi/getNewsList?client_type=4&gids=5&last_id={last_id}&page_size={page_size}&type=2
